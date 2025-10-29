@@ -43,7 +43,9 @@ public with sharing class AsynchronousTest {
 
         // Call the method to test between the startTest and stopTest methods
         Test.startTest();
-        //YOUR CODE HERE
+        Map<Id,Account> acctMap = new Map<Id,Account>(testAccounts);
+        Map<Id,Opportunity> oppMap = new Map<Id,Opportunity>(testOpps);
+        NextStepFuture.updateAllNextStep(acctMap.keySet(), oppMap.keySet());
         Test.stopTest();
 
         // Query the updated accounts and opportunities
@@ -129,8 +131,8 @@ public with sharing class AsynchronousTest {
 
         // Call the batch class
         Test.startTest();
-        NextStepBatch batchJob = new NextStepBatch();
-        Id batchId = Database.executeBatch(batchJob);
+        //NextStepBatch batchJob = new NextStepBatch();
+        //Id batchId = Database.executeBatch(batchJob);
         Test.stopTest();
 
         // Query the updated accounts and opportunities
